@@ -290,6 +290,13 @@ else
         echo "[+] Updating $REPO_NAME..."
         (cd "$MODULES_DIR/$REPO_NAME" && git fetch origin && git reset --hard "origin/$BRANCH" || true)
     fi
+    # Pin ReSukiSU to the last revision this tree's SUSFS hooks match (newer main
+    # changed ksu_handle_faccessat and needs TIF_PROC_IN_KSU_EXECVE in the kernel).
+    if [ "$ROOT" == "resukisu" ]; then
+        RESUKISU_PIN="${RESUKISU_PIN:-06390a6acbb7e966b3e1cda00fc1b93e89f11086}"
+        echo "[+] Pinning ReSukiSU to $RESUKISU_PIN"
+        (cd "$MODULES_DIR/$REPO_NAME" && git fetch origin "$RESUKISU_PIN" 2>/dev/null; git checkout -q "$RESUKISU_PIN")
+    fi
 
     # Apply SUSFS
     if [ "$VARIANT" == "susfs" ]; then
