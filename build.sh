@@ -293,7 +293,7 @@ else
     # Pin ReSukiSU to the same time as this tree's last SUSFS sync (2 Aug 2026): newer main
     # changed ksu_handle_faccessat, needs TIF_PROC_IN_KSU_EXECVE and newer SUSFS hooks.
     if [ "$ROOT" == "resukisu" ]; then
-        RESUKISU_PIN="${RESUKISU_PIN:-6d1aada8ea3ed12e0d978b120b3f6836bb4cb956}"
+        RESUKISU_PIN="${RESUKISU_PIN:-a9216b04e29cc973ddbf845342f2cbf85b47b460}"
         echo "[+] Pinning ReSukiSU to $RESUKISU_PIN"
         (cd "$MODULES_DIR/$REPO_NAME" && git fetch origin "$RESUKISU_PIN" 2>/dev/null; git checkout -q "$RESUKISU_PIN")
     fi
