@@ -293,7 +293,7 @@ else
     # Pin ReSukiSU to the same time as this tree's last SUSFS sync (2 Aug 2026): newer main
     # changed ksu_handle_faccessat, needs TIF_PROC_IN_KSU_EXECVE and newer SUSFS hooks.
     if [ "$ROOT" == "resukisu" ]; then
-        RESUKISU_PIN="${RESUKISU_PIN:-a9216b04e29cc973ddbf845342f2cbf85b47b460}"
+        RESUKISU_PIN="${RESUKISU_PIN:-239e1e8871b8fcd51a6e5b3002e0ba522fdd99fb}"
         echo "[+] Pinning ReSukiSU to $RESUKISU_PIN"
         (cd "$MODULES_DIR/$REPO_NAME" && git fetch origin "$RESUKISU_PIN" 2>/dev/null; git checkout -q "$RESUKISU_PIN")
     fi
@@ -310,7 +310,7 @@ else
         # Pin to latest stable SUSFS — includes "Fix possible kernel panic" (1450035)
         (cd "$SUSFS_DIR" && git reset --hard origin/gki-android15-6.6-dev)
         # ...but no newer than this tree's last SUSFS sync (2 Aug 2026): later dev changed the hook set
-        SUSFS_BEFORE="${SUSFS_BEFORE:-2026-08-03}"
+        SUSFS_BEFORE="${SUSFS_BEFORE:-2026-11-02}"
         _SP=$(cd "$SUSFS_DIR" && git rev-list -1 --before="$SUSFS_BEFORE" origin/gki-android15-6.6-dev)
         if [ -n "$_SP" ]; then echo "[+] Pinning SUSFS to $_SP (before $SUSFS_BEFORE)"; (cd "$SUSFS_DIR" && git checkout -q "$_SP"); fi
 
