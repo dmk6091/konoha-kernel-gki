@@ -6,7 +6,7 @@ set -e
 # ==========================================
 cleanup() {
     # Revert dynamic Baseband-guard modifications to keep git tree clean
-    git checkout security/Kconfig security/Makefile security/selinux/ include/linux/sched.h 2>/dev/null || true
+    git checkout security/Kconfig security/Makefile security/selinux/ include/linux/sched.h fs/Kconfig 2>/dev/null || true
     rm -f security/baseband-guard
 }
 trap cleanup EXIT
@@ -333,6 +333,10 @@ else
 
         if grep -q "config KSU_SUSFS" "$MODULES_DIR/$REPO_NAME/kernel/Kconfig" 2>/dev/null; then
             echo "[+] $REPO_NAME already has native SUSFS integration. Skipping patch..."
+            # ...and its own Kconfig for it: drop the tree's duplicate "KernelSU SUSFS" menu, which would
+            # keep KSU_SUSFS outside ReSukiSU's hook-method choice (it then stays on the tracepoint hook)
+            sed -i '/^menu "KernelSU SUSFS"/,/^endmenu/d' "$KERNEL_DIR/fs/Kconfig"
+            SUSFS_NATIVE=1
         else
             echo "[+] Patching $REPO_NAME for SUSFS..."
             (cd "$MODULES_DIR/$REPO_NAME" && \
@@ -385,7 +389,7 @@ else
 fi
 
 # Run SUSFS fixup if needed (after root module is symlinked/created)
-if [ "$VARIANT" == "susfs" ] && [ "$VARIANT" != "stock" ]; then
+if [ "$VARIANT" == "susfs" ] && [ "$VARIANT" != "stock" ] && [ "$SUSFS_NATIVE" != "1" ]; then
     echo "[+] Running SUSFS compatibility fixup ($ROOT)..."
     bash "$KERNEL_DIR/ksu_susfs_fixup.sh" "$KERNEL_DIR/drivers/kernelsu" "$ROOT"
 fi
