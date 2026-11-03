@@ -1938,6 +1938,10 @@ extern int ksu_handle_execveat_sucompat(int *fd, struct filename **filename_ptr,
 				void *envp, int *flags);
 extern int ksu_handle_post_execveat_sucompat(int *fd, struct filename **filename_ptr, void *argv,
 				void *envp, int *flags, int *retval);
+/* ReSukiSU has no KernelSU preinit hooks */
+#ifndef KSU_NO_PREINIT
+#define KSU_NO_PREINIT
+#endif
 #ifndef KSU_NO_PREINIT
 extern int ksu_setup_preinit_file(struct filename **filename_ptr, struct user_arg_ptr *argv_user);
 extern int ksu_preinit_handle_post_execveat(int *fd, struct filename **filename_ptr,
