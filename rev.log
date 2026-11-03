@@ -1,0 +1,128 @@
+patching file drivers/input/input.c
+patching file fs/Makefile
+Hunk #1 FAILED at 22.
+1 out of 1 hunk FAILED -- saving rejects to file fs/Makefile.rej
+patching file fs/exec.c
+Hunk #2 FAILED at 1925.
+Hunk #3 FAILED at 1946.
+2 out of 3 hunks FAILED -- saving rejects to file fs/exec.c.rej
+patching file fs/namei.c
+Hunk #1 FAILED at 41.
+Hunk #2 succeeded at 1597 (offset 1 line).
+Hunk #3 succeeded at 1614 (offset 1 line).
+Hunk #4 succeeded at 1623 (offset 1 line).
+Hunk #5 succeeded at 1631 (offset 1 line).
+Hunk #6 succeeded at 1639 (offset 1 line).
+Hunk #7 succeeded at 1647 (offset 1 line).
+Hunk #8 succeeded at 1670 (offset 1 line).
+Hunk #9 succeeded at 1691 (offset 1 line).
+Hunk #10 succeeded at 1705 (offset 1 line).
+Hunk #11 succeeded at 1718 (offset 1 line).
+Hunk #12 succeeded at 2019 (offset 1 line).
+Hunk #13 succeeded at 2286 (offset 1 line).
+Hunk #14 succeeded at 2476 (offset 2 lines).
+Hunk #15 succeeded at 3423 (offset 2 lines).
+Hunk #16 succeeded at 3530 (offset 2 lines).
+Hunk #17 FAILED at 3754.
+Hunk #18 FAILED at 3792.
+Hunk #19 FAILED at 3861.
+Hunk #20 FAILED at 5194.
+Hunk #21 succeeded at 5217 (offset 9 lines).
+Hunk #22 succeeded at 5233 (offset 9 lines).
+5 out of 22 hunks FAILED -- saving rejects to file fs/namei.c.rej
+patching file fs/namespace.c
+Hunk #1 FAILED at 32.
+Hunk #2 FAILED at 158.
+Hunk #3 succeeded at 170 (offset -1 lines).
+Hunk #4 succeeded at 221 with fuzz 2.
+Hunk #5 succeeded at 1125 with fuzz 2 (offset 15 lines).
+Hunk #6 succeeded at 1207 (offset 15 lines).
+Hunk #7 succeeded at 1227 with fuzz 2 (offset 16 lines).
+Hunk #8 succeeded at 3857 (offset 16 lines).
+Hunk #9 FAILED at 5096.
+3 out of 9 hunks FAILED -- saving rejects to file fs/namespace.c.rej
+patching file fs/notify/fdinfo.c
+Hunk #1 FAILED at 12.
+Hunk #2 FAILED at 26.
+Hunk #3 FAILED at 91.
+Hunk #4 FAILED at 109.
+4 out of 4 hunks FAILED -- saving rejects to file fs/notify/fdinfo.c.rej
+patching file fs/open.c
+Hunk #2 FAILED at 455.
+Hunk #3 FAILED at 470.
+2 out of 3 hunks FAILED -- saving rejects to file fs/open.c.rej
+patching file fs/proc/base.c
+Hunk #1 FAILED at 101.
+Hunk #2 succeeded at 1856 (offset 17 lines).
+Hunk #3 FAILED at 1848.
+Hunk #4 FAILED at 2482.
+3 out of 4 hunks FAILED -- saving rejects to file fs/proc/base.c.rej
+patching file fs/proc/bootconfig.c
+Hunk #1 FAILED at 12.
+1 out of 1 hunk FAILED -- saving rejects to file fs/proc/bootconfig.c.rej
+patching file fs/proc/fd.c
+Hunk #1 FAILED at 15.
+Hunk #2 FAILED at 74.
+2 out of 2 hunks FAILED -- saving rejects to file fs/proc/fd.c.rej
+patching file fs/proc/task_mmu.c
+Hunk #2 succeeded at 547 with fuzz 2 (offset 287 lines).
+Hunk #3 succeeded at 562 with fuzz 1 (offset 287 lines).
+Hunk #4 succeeded at 1249 with fuzz 1 (offset 357 lines).
+Hunk #5 FAILED at 955.
+Hunk #6 succeeded at 1387 (offset 359 lines).
+Hunk #7 succeeded at 2166 (offset 359 lines).
+Hunk #8 succeeded at 2175 (offset 359 lines).
+1 out of 8 hunks FAILED -- saving rejects to file fs/proc/task_mmu.c.rej
+patching file fs/proc_namespace.c
+Hunk #1 FAILED at 12.
+Hunk #2 succeeded at 251 (offset 4 lines).
+Hunk #3 FAILED at 316.
+2 out of 3 hunks FAILED -- saving rejects to file fs/proc_namespace.c.rej
+patching file fs/read_write.c
+patching file fs/readdir.c
+patching file fs/stat.c
+Hunk #1 FAILED at 20.
+Hunk #2 FAILED at 73.
+Hunk #3 FAILED at 146.
+Hunk #4 FAILED at 212.
+Hunk #5 succeeded at 257 (offset 30 lines).
+Hunk #6 FAILED at 245.
+Hunk #7 FAILED at 277.
+Hunk #8 FAILED at 301.
+7 out of 8 hunks FAILED -- saving rejects to file fs/stat.c.rej
+patching file fs/statfs.c
+Hunk #1 FAILED at 9.
+Hunk #2 FAILED at 87.
+2 out of 2 hunks FAILED -- saving rejects to file fs/statfs.c.rej
+patching file kernel/kallsyms.c
+Hunk #2 succeeded at 802 (offset 3 lines).
+patching file kernel/reboot.c
+Hunk #1 succeeded at 722 (offset 29 lines).
+Hunk #2 succeeded at 737 (offset 29 lines).
+patching file kernel/sys.c
+Hunk #1 succeeded at 673 (offset 12 lines).
+Hunk #2 succeeded at 688 with fuzz 2 (offset 13 lines).
+Hunk #3 FAILED at 1305.
+1 out of 3 hunks FAILED -- saving rejects to file kernel/sys.c.rej
+patching file mm/memory.c
+Hunk #2 succeeded at 6513 (offset 93 lines).
+patching file security/selinux/avc.c
+Hunk #2 FAILED at 720.
+1 out of 2 hunks FAILED -- saving rejects to file security/selinux/avc.c.rej
+patching file security/selinux/hooks.c
+Hunk #1 FAILED at 107.
+Hunk #2 FAILED at 6518.
+Hunk #3 FAILED at 7178.
+3 out of 3 hunks FAILED -- saving rejects to file security/selinux/hooks.c.rej
+patching file security/selinux/selinuxfs.c
+Hunk #1 FAILED at 44.
+Hunk #2 FAILED at 243.
+Hunk #3 FAILED at 301.
+Hunk #4 FAILED at 718.
+Hunk #5 FAILED at 902.
+Hunk #6 FAILED at 1006.
+6 out of 6 hunks FAILED -- saving rejects to file security/selinux/selinuxfs.c.rej
+patching file security/selinux/ss/services.c
+Hunk #1 FAILED at 527.
+Hunk #2 FAILED at 727.
+2 out of 2 hunks FAILED -- saving rejects to file security/selinux/ss/services.c.rej

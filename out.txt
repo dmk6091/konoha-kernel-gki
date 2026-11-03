@@ -1,0 +1,360 @@
+old e593920b366d407aef6029ce83bf27536d91ffba new 7db533f9f13675a03e6626eb45c4b6de208f1340
+7db533f 2026-11-02 kernel: priority_uid_filter: Add extra flag O_NOATIME with filp_open() to avoid updating the inode atime.
+3c2fd10 2026-11-02 kernel & KernelSU: Make priority_uid_filter as new feature
+e5b9957 2026-11-02 KernelSU: Sync with upstream
+3ab6fff 2026-11-01 kernel: priority_uid_filter: Refactor uid parser
+9a233aa 2026-11-01 kernel: selinux_hide: Revert to the safer hash mechanism and full tuple comparison.
+e6b21be 2026-11-01 kernel & KernelSU: Refactor selinux_hide(experimental, partially done); Sync with upstream
+825c526 2026-10-29 KernelSU: Fix compiler error
+627a1f9 2026-10-27 kernel & Kernel: priority uid filter: Fix UAF bugs and worker not able to run
+df74d0d 2026-10-24 kernel & KernelSU: Sync with upstream
+2f330c8 2026-10-24 susfs: Add priority uid filter
+e6d9de9 2026-10-23 Update README.md
+c66451e 2026-10-19 KernelSU: Sync with the official KernelSU main repo
+879e261 2026-10-19 kernel & KernelSU: Reuse upstream selinux_hide existing code
+4973524 2026-10-19 kernel & KernelSU: Sync with the official KernelSU main repo
+35d5881 2026-10-19 kernel: More fixes for selinux_hide
+bd3a350 2026-10-18 rebase susfs patches onto android15-6.6.143
+590b703 2026-10-15 kernel & KernelSU: Sync with the official KernelSU main repo
+80aa72a 2026-10-14 Revert "kernel & KernelSU: Sync with the official KernelSU main repo"
+64e1690 2026-10-12 kernel & KernelSU: Sync with the official KernelSU main repo
+3d464a5 2026-10-12 kernel & KernelSU: Sync with the official KernelSU main repo
+e029672 2026-09-26 kernel: SUS_KSTAT: Fix the wrong type of member "is_statically"
+467fdf9 2026-09-25 kernel: SUS_KSTAT: Add new wrapper for statfs_by_dentry()
+245154a 2026-09-25 kernel: SUS_KSTAT: rename susfs_calculate_f_flags to calculate_f_flags_wrapper
+8b167f8 2026-09-24 kernel: SUS_KSTAT: fix f_flags left zeroed on the SUS_KSTAT statfs path
+f0a6015 2026-09-23 KernelSU: Sync with the official KernelSU main repo
+f2f0985 2026-09-18 kernel: SUS_MOUNT: Fix race condition in clone_mnt()
+51740ab 2026-09-17 kernel: Fix compiling issues for some older gki kernel
+be9c009 2026-09-16 Sync with branch gki-android15-6.6
+c2b33b8 2026-09-15 KernelSU: Sync with the official KernelSU main repo
+9fdb861 2026-09-15 kernel: make more kernel source happy
+5d37c49 2026-09-15 kernel & ksu_susfs: SUS_KSTAT: Fix wrong bit for KSTAT_SPOOF_CTIME_TV_SEC that leads to unexpected spoofing behavior
+d08eb83 2026-09-14 kernel: Fix NULL deref for susfs_get_enabled_features()
+aac19f1 2026-09-13 kernel: SUS_KSTAT: Fix wrong spoofing logic in vfs_statfs()
+aa9cf0c 2026-09-12 kernel: SUS_KSTAT: Fix compiling error
+ebead36 2026-09-12 kernel: SUS_MOUNT: Fix potential detection of mount minor dev gap
+13a7ded 2026-09-12 Refactor spoofing logic of SUS_MOUNT, SUS_KSTAT and OPEN_REDIRECT
+3702122 2026-09-06 kernel & KernelSU: Fix [ksu_driver_su] being wrongly installed before su session
+63da8fb 2026-09-06 KernelSU: Sync with the official KernelSU main repo
+5ad8dcc 2026-08-30 KernelSU: Sync with the official KernelSU main repo
+80e0a10 2026-08-30 Bump version to 2.3.0
+ddbec17 2026-08-30 KernelSU: Sync with the official KernelSU main repo
+edad1ae 2026-08-26 KernelSU: Fix kernel warning when disabling static_key within atomic context
+b934e24 2026-08-25 KernelSU: Sync with the official KernelSU main repo
+0b5062d 2026-08-23 KernelSU: mark TIF_PROC_UMOUNTED for zygote_next spwaned processes set with umount
+13e66f0 2026-08-22 kernel & KernelSU: SUS_MOUNT: temp fix for zygote_next exploit
+d87f91c 2026-08-21 KernelSU: Sync with the official KernelSU main repo
+5e48071 2026-08-19 kernel & KernelSU: optimization for ksu_handle_faccessat() / ksu_handle_stat()
+394ffc3 2026-08-19 kernel: sucompat: mark no root allowed app process with new flag TIF_PROC_NO_SU instead of TIF_PROC_UMOUNTED
+7d625cd 2026-08-18 KernelSU: Sync with the official KernelSU main repo
+50_add_susfs_in_gki-android15-6.6.patch
+KernelSU
+fs
+include
+104:config KSU_SUSFS
+169:config KSU_SUSFS_SUS_PATH
+180:config KSU_SUSFS_SUS_MOUNT
+188:config KSU_SUSFS_SUS_KSTAT
+196:config KSU_SUSFS_SPOOF_UNAME
+204:config KSU_SUSFS_ENABLE_LOG
+211:config KSU_SUSFS_HIDE_KSU_SUSFS_SYMBOLS
+219:config KSU_SUSFS_SPOOF_CMDLINE_OR_BOOTCONFIG
+227:config KSU_SUSFS_OPEN_REDIRECT
+236:config KSU_SUSFS_SUS_MAP
+== reverse old (dry)
+checking file drivers/input/input.c
+checking file fs/Makefile
+Hunk #1 FAILED at 22.
+1 out of 1 hunk FAILED
+checking file fs/exec.c
+Hunk #2 FAILED at 1925.
+Hunk #3 FAILED at 1946.
+2 out of 3 hunks FAILED
+checking file fs/namei.c
+Hunk #1 FAILED at 41.
+Hunk #2 succeeded at 1597 (offset 1 line).
+Hunk #3 succeeded at 1614 (offset 1 line).
+Hunk #4 succeeded at 1623 (offset 1 line).
+Hunk #5 succeeded at 1631 (offset 1 line).
+Hunk #6 succeeded at 1639 (offset 1 line).
+Hunk #7 succeeded at 1647 (offset 1 line).
+Hunk #8 succeeded at 1670 (offset 1 line).
+Hunk #9 succeeded at 1691 (offset 1 line).
+Hunk #10 succeeded at 1705 (offset 1 line).
+Hunk #11 succeeded at 1718 (offset 1 line).
+Hunk #12 succeeded at 2019 (offset 1 line).
+Hunk #13 succeeded at 2286 (offset 1 line).
+Hunk #14 succeeded at 2476 (offset 2 lines).
+Hunk #15 succeeded at 3423 (offset 2 lines).
+Hunk #16 succeeded at 3530 (offset 2 lines).
+Hunk #17 FAILED at 3754.
+Hunk #18 FAILED at 3792.
+Hunk #19 FAILED at 3861.
+Hunk #20 FAILED at 5194.
+Hunk #21 succeeded at 5217 (offset 9 lines).
+Hunk #22 succeeded at 5233 (offset 9 lines).
+5 out of 22 hunks FAILED
+checking file fs/namespace.c
+Hunk #1 FAILED at 32.
+Hunk #2 FAILED at 158.
+Hunk #3 succeeded at 170 (offset -1 lines).
+Hunk #4 succeeded at 221 with fuzz 2.
+Hunk #5 succeeded at 1125 with fuzz 2 (offset 15 lines).
+Hunk #6 succeeded at 1207 (offset 15 lines).
+Hunk #7 succeeded at 1227 with fuzz 2 (offset 16 lines).
+Hunk #8 succeeded at 3857 (offset 16 lines).
+Hunk #9 FAILED at 5096.
+3 out of 9 hunks FAILED
+checking file fs/notify/fdinfo.c
+Hunk #1 FAILED at 12.
+Hunk #2 FAILED at 26.
+Hunk #3 FAILED at 91.
+Hunk #4 FAILED at 109.
+4 out of 4 hunks FAILED
+checking file fs/open.c
+Hunk #2 FAILED at 455.
+Hunk #3 FAILED at 470.
+2 out of 3 hunks FAILED
+checking file fs/proc/base.c
+Hunk #1 FAILED at 101.
+Hunk #2 succeeded at 1856 (offset 17 lines).
+Hunk #3 FAILED at 1848.
+Hunk #4 FAILED at 2482.
+3 out of 4 hunks FAILED
+checking file fs/proc/bootconfig.c
+Hunk #1 FAILED at 12.
+1 out of 1 hunk FAILED
+checking file fs/proc/fd.c
+Hunk #1 FAILED at 15.
+Hunk #2 FAILED at 74.
+2 out of 2 hunks FAILED
+checking file fs/proc/task_mmu.c
+Hunk #2 succeeded at 547 with fuzz 2 (offset 287 lines).
+Hunk #3 succeeded at 562 with fuzz 1 (offset 287 lines).
+Hunk #4 succeeded at 1249 with fuzz 1 (offset 357 lines).
+Hunk #5 FAILED at 955.
+Hunk #6 succeeded at 1387 (offset 359 lines).
+Hunk #7 succeeded at 2166 (offset 359 lines).
+Hunk #8 succeeded at 2175 (offset 359 lines).
+1 out of 8 hunks FAILED
+checking file fs/proc_namespace.c
+Hunk #1 FAILED at 12.
+Hunk #2 succeeded at 251 (offset 4 lines).
+Hunk #3 FAILED at 316.
+2 out of 3 hunks FAILED
+checking file fs/read_write.c
+checking file fs/readdir.c
+checking file fs/stat.c
+Hunk #1 FAILED at 20.
+Hunk #2 FAILED at 73.
+Hunk #3 FAILED at 146.
+Hunk #4 FAILED at 212.
+Hunk #5 succeeded at 257 (offset 30 lines).
+Hunk #6 FAILED at 245.
+Hunk #7 FAILED at 277.
+Hunk #8 FAILED at 301.
+7 out of 8 hunks FAILED
+checking file fs/statfs.c
+Hunk #1 FAILED at 9.
+Hunk #2 FAILED at 87.
+2 out of 2 hunks FAILED
+checking file kernel/kallsyms.c
+Hunk #2 succeeded at 802 (offset 3 lines).
+checking file kernel/reboot.c
+Hunk #1 succeeded at 722 (offset 29 lines).
+Hunk #2 succeeded at 737 (offset 29 lines).
+checking file kernel/sys.c
+Hunk #1 succeeded at 673 (offset 12 lines).
+Hunk #2 succeeded at 688 with fuzz 2 (offset 13 lines).
+Hunk #3 FAILED at 1305.
+1 out of 3 hunks FAILED
+checking file mm/memory.c
+Hunk #2 succeeded at 6513 (offset 93 lines).
+checking file security/selinux/avc.c
+Hunk #2 FAILED at 720.
+1 out of 2 hunks FAILED
+checking file security/selinux/hooks.c
+Hunk #1 FAILED at 107.
+Hunk #2 FAILED at 6518.
+Hunk #3 FAILED at 7178.
+3 out of 3 hunks FAILED
+checking file security/selinux/selinuxfs.c
+Hunk #1 FAILED at 44.
+Hunk #2 FAILED at 243.
+Hunk #3 FAILED at 301.
+Hunk #4 FAILED at 718.
+Hunk #5 FAILED at 902.
+Hunk #6 FAILED at 1006.
+6 out of 6 hunks FAILED
+checking file security/selinux/ss/services.c
+Hunk #1 FAILED at 527.
+Hunk #2 FAILED at 727.
+2 out of 2 hunks FAILED
+== apply new
+patching file block/ioprio.c
+Hunk #1 succeeded at 70 with fuzz 2 (offset 4 lines).
+Hunk #2 FAILED at 117.
+Hunk #3 FAILED at 253.
+2 out of 3 hunks FAILED -- saving rejects to file block/ioprio.c.rej
+patching file drivers/input/input.c
+patching file fs/Makefile
+Hunk #1 succeeded at 24 with fuzz 2 (offset 2 lines).
+patching file fs/exec.c
+Hunk #2 succeeded at 1950 with fuzz 2 (offset 21 lines).
+Hunk #3 FAILED at 1953.
+Hunk #4 FAILED at 2023.
+2 out of 4 hunks FAILED -- saving rejects to file fs/exec.c.rej
+patching file fs/namei.c
+Hunk #1 FAILED at 41.
+Hunk #2 succeeded at 1597 (offset 12 lines).
+Hunk #3 succeeded at 1622 (offset 12 lines).
+Hunk #4 succeeded at 1634 (offset 12 lines).
+Hunk #5 succeeded at 1645 (offset 12 lines).
+Hunk #6 succeeded at 1664 (offset 12 lines).
+Hunk #7 succeeded at 1675 (offset 12 lines).
+Hunk #8 succeeded at 1708 (offset 12 lines).
+Hunk #9 succeeded at 1739 (offset 12 lines).
+Hunk #10 succeeded at 1760 (offset 12 lines).
+Hunk #11 succeeded at 1779 (offset 12 lines).
+Hunk #12 succeeded at 2093 (offset 12 lines).
+Hunk #13 succeeded at 2365 (offset 12 lines).
+Hunk #14 succeeded at 2564 (offset 13 lines).
+Hunk #15 succeeded at 3514 (offset 13 lines).
+Hunk #16 succeeded at 3645 (offset 13 lines).
+Hunk #17 FAILED at 3861.
+Hunk #18 FAILED at 3877.
+Hunk #19 FAILED at 3911.
+Hunk #20 FAILED at 5223.
+Hunk #21 succeeded at 5335 (offset 103 lines).
+Hunk #22 succeeded at 5362 (offset 103 lines).
+5 out of 22 hunks FAILED -- saving rejects to file fs/namei.c.rej
+patching file fs/namespace.c
+Hunk #1 FAILED at 32.
+Hunk #2 FAILED at 147.
+Hunk #3 succeeded at 170 (offset 15 lines).
+Hunk #4 succeeded at 239 with fuzz 2 (offset 16 lines).
+Hunk #5 succeeded at 858 with fuzz 2 (offset 30 lines).
+Hunk #6 succeeded at 1270 with fuzz 2 (offset 31 lines).
+Hunk #7 succeeded at 1366 (offset 31 lines).
+Hunk #8 succeeded at 1420 with fuzz 2 (offset 32 lines).
+Hunk #9 succeeded at 4055 (offset 32 lines).
+Hunk #10 FAILED at 5281.
+3 out of 10 hunks FAILED -- saving rejects to file fs/namespace.c.rej
+patching file fs/notify/fdinfo.c
+Hunk #1 FAILED at 12.
+Hunk #2 FAILED at 23.
+Hunk #3 FAILED at 77.
+Hunk #4 FAILED at 88.
+4 out of 4 hunks FAILED -- saving rejects to file fs/notify/fdinfo.c.rej
+patching file fs/open.c
+Hunk #2 succeeded at 465 with fuzz 2 (offset 7 lines).
+Hunk #3 FAILED at 471.
+Hunk #4 FAILED at 490.
+2 out of 4 hunks FAILED -- saving rejects to file fs/open.c.rej
+patching file fs/proc/base.c
+Hunk #1 FAILED at 101.
+Hunk #2 succeeded at 1856 (offset 21 lines).
+Hunk #3 succeeded at 1899 with fuzz 2 (offset 51 lines).
+Hunk #4 FAILED at 2482.
+2 out of 4 hunks FAILED -- saving rejects to file fs/proc/base.c.rej
+patching file fs/proc/bootconfig.c
+Hunk #1 FAILED at 12.
+1 out of 1 hunk FAILED -- saving rejects to file fs/proc/bootconfig.c.rej
+patching file fs/proc/fd.c
+Hunk #1 FAILED at 15.
+Hunk #2 FAILED at 56.
+2 out of 2 hunks FAILED -- saving rejects to file fs/proc/fd.c.rej
+patching file fs/proc/task_mmu.c
+Hunk #2 succeeded at 550 with fuzz 2 (offset 158 lines).
+Hunk #3 succeeded at 573 with fuzz 1 (offset 158 lines).
+Hunk #4 succeeded at 1288 (offset 209 lines).
+Hunk #5 FAILED at 1149.
+Hunk #6 succeeded at 1433 (offset 218 lines).
+Hunk #7 succeeded at 2219 (offset 218 lines).
+Hunk #8 succeeded at 2231 (offset 218 lines).
+1 out of 8 hunks FAILED -- saving rejects to file fs/proc/task_mmu.c.rej
+patching file fs/proc_namespace.c
+Hunk #1 FAILED at 12.
+Hunk #2 succeeded at 251 (offset 12 lines).
+Hunk #3 FAILED at 460.
+2 out of 3 hunks FAILED -- saving rejects to file fs/proc_namespace.c.rej
+patching file fs/read_write.c
+patching file fs/readdir.c
+patching file fs/stat.c
+Hunk #1 FAILED at 20.
+Hunk #2 FAILED at 131.
+Hunk #3 succeeded at 257 (offset 61 lines).
+Hunk #4 succeeded at 316 with fuzz 2 (offset 76 lines).
+Hunk #5 FAILED at 263.
+3 out of 5 hunks FAILED -- saving rejects to file fs/stat.c.rej
+patching file fs/statfs.c
+Hunk #1 FAILED at 9.
+Hunk #2 succeeded at 118 with fuzz 2 (offset 49 lines).
+Hunk #3 succeeded at 209 with fuzz 2 (offset 86 lines).
+1 out of 3 hunks FAILED -- saving rejects to file fs/statfs.c.rej
+patching file fs/super.c
+Hunk #1 FAILED at 37.
+Hunk #2 succeeded at 1268 with fuzz 2 (offset 8 lines).
+Hunk #3 succeeded at 1304 with fuzz 2 (offset 24 lines).
+1 out of 3 hunks FAILED -- saving rejects to file fs/super.c.rej
+patching file kernel/kallsyms.c
+patching file kernel/reboot.c
+Hunk #1 succeeded at 722 (offset 29 lines).
+Hunk #2 succeeded at 740 (offset 29 lines).
+patching file kernel/sys.c
+Hunk #1 succeeded at 221 with fuzz 2 (offset 4 lines).
+Hunk #2 FAILED at 267.
+Hunk #3 FAILED at 335.
+Hunk #4 succeeded at 677 (offset 12 lines).
+Hunk #5 succeeded at 695 with fuzz 2 (offset 13 lines).
+Hunk #6 FAILED at 1316.
+3 out of 6 hunks FAILED -- saving rejects to file kernel/sys.c.rej
+patching file mm/memory.c
+Hunk #2 succeeded at 6516 (offset -15 lines).
+patching file security/selinux/avc.c
+Hunk #2 FAILED at 726.
+1 out of 2 hunks FAILED -- saving rejects to file security/selinux/avc.c.rej
+patching file security/selinux/hooks.c
+Hunk #1 FAILED at 107.
+Hunk #2 succeeded at 6663 with fuzz 2 (offset 150 lines).
+Hunk #3 FAILED at 7284.
+2 out of 3 hunks FAILED -- saving rejects to file security/selinux/hooks.c.rej
+patching file security/selinux/selinuxfs.c
+Hunk #1 succeeded at 54 with fuzz 2 (offset 10 lines).
+Hunk #2 FAILED at 230.
+Hunk #3 succeeded at 731 with fuzz 2 (offset 69 lines).
+Hunk #4 FAILED at 845.
+Hunk #5 succeeded at 1078 with fuzz 2 (offset 137 lines).
+2 out of 5 hunks FAILED -- saving rejects to file security/selinux/selinuxfs.c.rej
+patching file security/selinux/ss/services.c
+Hunk #1 succeeded at 77 with fuzz 2 (offset 7 lines).
+Hunk #2 FAILED at 2204.
+Hunk #3 FAILED at 3082.
+Hunk #4 FAILED at 4015.
+3 out of 4 hunks FAILED -- saving rejects to file security/selinux/ss/services.c.rej
+patching file security/selinux/status.c
+Hunk #1 succeeded at 17 with fuzz 2 (offset 4 lines).
+Hunk #2 succeeded at 102 with fuzz 2 (offset 14 lines).
+Hunk #3 succeeded at 148 with fuzz 2 (offset 25 lines).
+./fs/stat.c.rej
+./fs/notify/fdinfo.c.rej
+./fs/Makefile.rej
+./fs/exec.c.rej
+./fs/super.c.rej
+./fs/statfs.c.rej
+./fs/proc/bootconfig.c.rej
+./fs/proc/fd.c.rej
+./fs/proc/base.c.rej
+./fs/proc/task_mmu.c.rej
+./fs/open.c.rej
+./fs/namespace.c.rej
+./fs/namei.c.rej
+./fs/proc_namespace.c.rej
+./mm/rmap.c.rej
+./security/selinux/ss/services.c.rej
+./security/selinux/hooks.c.rej
+./security/selinux/avc.c.rej
+./security/selinux/selinuxfs.c.rej
+./kernel/sys.c.rej
+./block/ioprio.c.rej
