@@ -3,6 +3,8 @@ on:
   workflow_dispatch:
   push:
     branches: [susfs-upgrade]
+permissions:
+  contents: write
 jobs:
   probe:
     runs-on: ubuntu-latest
@@ -32,13 +34,11 @@ jobs:
           find . -name '*.rej' | tee -a /tmp/out.txt
           git diff > /tmp/susfs-upgrade.diff
           mkdir -p /tmp/rej && find . -name '*.rej' -exec cp --parents {} /tmp/rej \;
-      - uses: actions/upload-artifact@v4
-        with:
-          name: probe
-          path: |
-            /tmp/out.txt
-            /tmp/rev.log
-            /tmp/susfs-upgrade.diff
-            /tmp/old.patch
-            /tmp/new.patch
-            /tmp/rej
+      - name: Save probe output to branch susfs-probe-out
+        run: |
+          mkdir -p /tmp/o && cp /tmp/out.txt /tmp/rev.log /tmp/old.patch /tmp/new.patch /tmp/o/ && cp -r /tmp/rej /tmp/o/rej
+          cp -r /tmp/susfs/kernel_patches /tmp/o/susfs_kernel_patches
+          git -C /tmp/susfs log -1 --format=%H > /tmp/o/susfs_commit.txt
+          cd /tmp/o && git init -q && git checkout -q -b susfs-probe-out && git add -A
+          git -c user.name=ci -c user.email=ci@local commit -qm probe
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" susfs-probe-out
