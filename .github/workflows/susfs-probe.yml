@@ -1,0 +1,42 @@
+name: SUSFS upgrade probe
+on:
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch SUSFS (pinned + latest) and ReSukiSU rc3
+        run: |
+          git clone -q https://gitlab.com/simonpunk/susfs4ksu.git -b gki-android15-6.6-dev /tmp/susfs
+          cd /tmp/susfs
+          OLD=$(git rev-list -1 --before=2026-08-03 HEAD); NEW=$(git rev-parse HEAD)
+          echo "old $OLD new $NEW" | tee /tmp/out.txt
+          git log --format='%h %cd %s' --date=short $OLD..$NEW | tee -a /tmp/out.txt
+          ls kernel_patches | tee -a /tmp/out.txt
+          P=$(ls kernel_patches | grep -m1 '^50_')
+          git show $OLD:kernel_patches/$P > /tmp/old.patch
+          cp kernel_patches/$P /tmp/new.patch
+          git clone -q https://github.com/ReSukiSU/ReSukiSU /tmp/rsk && cd /tmp/rsk && git checkout -q v4.2.0-rc3
+          grep -n "config KSU_SUSFS" kernel/Kconfig | tee -a /tmp/out.txt || echo "rc3: no native susfs Kconfig" | tee -a /tmp/out.txt
+      - name: Swap old SUSFS hooks for new
+        run: |
+          set +e
+          echo "== reverse old (dry)" | tee -a /tmp/out.txt
+          patch -p1 -R --dry-run -f < /tmp/old.patch 2>&1 | tee -a /tmp/out.txt | tail -40
+          patch -p1 -R -f --no-backup-if-mismatch < /tmp/old.patch > /tmp/rev.log 2>&1
+          echo "== apply new" | tee -a /tmp/out.txt
+          patch -p1 -f --no-backup-if-mismatch < /tmp/new.patch 2>&1 | tee -a /tmp/out.txt | tail -60
+          find . -name '*.rej' | tee -a /tmp/out.txt
+          git diff > /tmp/susfs-upgrade.diff
+          mkdir -p /tmp/rej && find . -name '*.rej' -exec cp --parents {} /tmp/rej \;
+      - uses: actions/upload-artifact@v4
+        with:
+          name: probe
+          path: |
+            /tmp/out.txt
+            /tmp/rev.log
+            /tmp/susfs-upgrade.diff
+            /tmp/old.patch
+            /tmp/new.patch
+            /tmp/rej
