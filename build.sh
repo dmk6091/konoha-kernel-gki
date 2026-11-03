@@ -608,6 +608,8 @@ case "$VARIANT" in
     root)  scripts/config --file "$OUT_DIR/.config" -e CONFIG_KSU -d CONFIG_KSU_SUSFS ;;
     susfs) 
         scripts/config --file "$OUT_DIR/.config" -e CONFIG_KSU_SUSFS -e CONFIG_KSU_SUSFS_SUS_MAP
+        # ReSukiSU: SUSFS is one choice of "KernelSU Hooking Method" (default is the tracepoint hook)
+        scripts/config --file "$OUT_DIR/.config" -d CONFIG_KSU_TRACEPOINT_HOOK -d CONFIG_KSU_MANUAL_HOOK
         if [ "$VARIANT" != "stock" ]; then
             scripts/config --file "$OUT_DIR/.config" -e CONFIG_KSU
         else
